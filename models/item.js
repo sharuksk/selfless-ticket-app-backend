@@ -7,6 +7,10 @@ const ItemSchema = new Schema ({
         type: String,
         required: true
     },
+    itemId: {
+        type: String,
+        required: true
+    },
     itemDescription: {
         type: String,
     },
@@ -21,4 +25,4 @@ const ItemSchema = new Schema ({
     
 });
 
-module.exports = Post = mongoose.model('post', ItemSchema);
+module.exports = Item = mongoose.model('item', ItemSchema);
