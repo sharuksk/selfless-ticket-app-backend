@@ -26,9 +26,7 @@ router.post('/getItem', (req, res) => {
 });
 
 
-//@route    POST api/posts
-//@desc     Create posts
-//@access   Private
+
 
 router.post('/new', (req, res) => {
 
