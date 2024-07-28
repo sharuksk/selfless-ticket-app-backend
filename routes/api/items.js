@@ -25,22 +25,27 @@ router.post('/getItem', (req, res) => {
         .catch(err => res.status(404).json({noitemfound: 'No Post found with that id'}));
 });
 
+router.post('/getAll', (req, res) => {
+    Item.find()
+        .then(items => {res.json(items)})
+        .catch(err => res.status(404).json({noitemfound: 'No Post found with that id'}));
+});
+
 
 
 
 router.post('/addItem', (req, res) => {
 
-    console.log(req.body);
-    res.json("jhfhf")
-    // const newItem = new Item({
-    //     itemName: req.body.itemName,
-    //     itemId: req.body.itemId,
-    //     itemDescription: req.body.itemDescription,
-    //     itemPrice: req.body.itemPrice,
-    //     itemImage: req.body.itemImage,
-    // });
+    //console.log(req.body);
+    const newItem = new Item({
+        itemName: req.body.itemName,
+        itemId: req.body.itemId,
+        itemDescription: req.body.itemDescription,
+        itemPrice: req.body.itemPrice,
+        itemImage: req.body.itemImage,
+    });
 
-    // newItem.save().then(item => res.json(item));
+    newItem.save().then(item => res.json(item));
 });
 
 //@route    DELETE api/item/:id
