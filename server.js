@@ -6,19 +6,7 @@ const cors = require("cors");
 const posts = require('./routes/api/posts');
 const items = require('./routes/api/items');
 
-const app = express();
-
-//Body paser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(
-    bodyParser.urlencoded({
-        limit: "50mb",
-        extended: true,
-        parameterLimit: 50000,
-    }),
-);
-
+const app = require("./app");
 //DB Config
 const db = require('./config/keys').mongoURI;
 
@@ -31,12 +19,6 @@ mongoose
 //Passport middleware 
 
 app.get('/', (req,res) => res.send('Hello'));
-
-app.use(
-    cors({
-        origin: "*",
-    }),
-);
 
 app.use('/api/posts', posts);
 app.use('/api/items', items);

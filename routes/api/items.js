@@ -28,31 +28,33 @@ router.post('/getItem', (req, res) => {
 
 
 
-router.post('/new', (req, res) => {
+router.post('/addItem', (req, res) => {
 
-    const newItem = new Item({
-        itemName: req.body.itemName,
-        itemId: req.body.itemId,
-        itemDescription: req.body.itemDescription,
-        itemPrice: req.body.itemPrice,
-        itemImage: req.body.itemImage,
-    });
+    console.log(req.body);
+    res.json("jhfhf")
+    // const newItem = new Item({
+    //     itemName: req.body.itemName,
+    //     itemId: req.body.itemId,
+    //     itemDescription: req.body.itemDescription,
+    //     itemPrice: req.body.itemPrice,
+    //     itemImage: req.body.itemImage,
+    // });
 
-    newItem.save().then(item => res.json(item));
+    // newItem.save().then(item => res.json(item));
 });
 
-//@route    DELETE api/posts/:id
-//@desc     Delete posts
+//@route    DELETE api/item/:id
+//@desc     Delete item
 //@access   Private
 router.delete('/:id', (req, res) => {
-    Post.findById(req.params.id)
-        .then(post => {
+    Item.findById(req.params.id)
+        .then(item => {
                 
-            post.deleteOne().then(()=> res.json({success: true}));
+            item.deleteOne().then(()=> res.json({success: true}));
             //().then(()=> res.json({ success: true }));                      
             
         })
-        .catch(err => res.status(404).json({ postnotfound: 'no post found'}));
+        .catch(err => res.status(404).json({ itemnotfound: 'no item found'}));
        
     
 });
