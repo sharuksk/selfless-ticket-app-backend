@@ -51,8 +51,9 @@ router.post('/addItem', (req, res) => {
 //@route    DELETE api/item/:id
 //@desc     Delete item
 //@access   Private
-router.delete('/:id', (req, res) => {
-    Item.findById(req.params.id)
+router.post('/delete', (req, res) => {
+    console.log(req.body.data);
+    Item.findById(req.body.data._id)
         .then(item => {
                 
             item.deleteOne().then(()=> res.json({success: true}));
